@@ -1,0 +1,27 @@
+<!-- {% if user.is_authenticated %}
+  {{ user }}
+  <a href="logout">logout</a>
+{% else %}
+  {{ user }}
+  <a href="login">login</a>
+{% endif %} -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <p>hello</p>
+    <p>welcome {{ user.username }}</p>
+    <p><a href="/logout">Logout</a></p>
+    {% else %}
+    <p><a href="/login">Login</a></p>
+    <p><a href="/signup">Signup</a></p>
+    {% endif %}
+</body>
+
+</html>
