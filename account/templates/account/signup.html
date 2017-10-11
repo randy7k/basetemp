@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html>
+{% extends 'account/base.html' %}
 
-<head>
-    <title></title>
-</head>
+{% block content %}
 
-<body>
-    <form method="POST">
-        {{user_exists_error}}
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
-</body>
+<form method="POST">
+    {{user_exists_error}}
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
 
-</html>
+{% endblock %}
