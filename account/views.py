@@ -6,11 +6,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django import forms
 from .forms import SignUpForm
 
-# from __future__ import unicode_literals
-
-def home(request):
-    return render(request, 'account/home.html')
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -23,4 +18,9 @@ def signup(request):
             return redirect('/')
     else:
         form = SignUpForm()
-    return render(request, 'account/signup.html', {'form': form})
+
+    context = {
+        "user": request.POST or '',
+        'form': form,
+    }
+    return render(request, 'account/signup.html', context)

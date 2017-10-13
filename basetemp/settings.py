@@ -25,13 +25,14 @@ SECRET_KEY = 'l^iy2$(td-ftl%7$-tck&k^dg!+5(l*dki9jf=^zu!&g!glykt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ]
+ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = '/'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'home',
     'account',
     'django.contrib.admin',
     'django.contrib.auth',

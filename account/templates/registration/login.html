@@ -1,7 +1,14 @@
 
-{% extends 'account/base.html' %}
+{% extends 'home/base.html' %}
 
 {% block content %}
+
+<!--
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit">
+</form> -->
 
 <section class="container g-py-100">
   <div class="row justify-content-center">
@@ -13,23 +20,29 @@
 
         <!-- Form -->
         <form method="POST">
-        {% csrf_token %}
+          {% csrf_token %}
+
+          {% if form.errors %}
+            <ul>
+              <li class="red">Invalid Username or Password</li>
+            </ul>
+          {% endif %}
 
           <div class="mb-4">
-            <label class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13">Email:</label>
-            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="text" name="username" placeholder="johndoe@gmail.com">
+            <label class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13">Username: <span class="red">*</span></label>
+            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" required autofocus type="text" name="username" placeholder="johndoe@gmail.com">
           </div>
 
           <div class="g-mb-35">
             <div class="row justify-content-between">
               <div class="col align-self-center">
-                <label class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13">Password:</label>
+                <label class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13">Password: <span class="red">*</span></label>
               </div>
               <div class="col align-self-center text-right">
                 <a class="d-inline-block g-font-size-12 mb-2" href="#">Forgot password?</a>
               </div>
             </div>
-            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15 mb-3" name="password" type="password" placeholder="Password">
+            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15 mb-3" required name="password" type="password" placeholder="Password">
             <div class="row justify-content-between">
               <div class="col-8 align-self-center">
                 <label class="form-check-inline u-check g-color-gray-dark-v5 g-font-size-13 g-pl-25 mb-0">
